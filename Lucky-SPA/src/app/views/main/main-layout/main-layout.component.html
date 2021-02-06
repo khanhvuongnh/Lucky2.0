@@ -1,0 +1,17 @@
+<img class="main-background" [ngClass]="isBtnBgActive ? 'z-index-1000' : ''" [src]="backgroundUrl" alt="background">
+
+<div class="hidden-area" (mouseenter)="isHiddenAreaVisible = true" (mouseleave)="isHiddenAreaVisible = false">
+  <ng-container *ngIf="isHiddenAreaVisible">
+    <button class="btn btn-sm btn-success rounded-pill m-1" [routerLink]="['/']">
+      <i class="fa fa-home"></i> Home
+    </button>
+    <button class="btn btn-sm btn-danger rounded-pill m-1" [routerLink]="['/settings']">
+      <i class="fa fa-cog"></i> Settings
+    </button>
+    <button class="btn btn-sm btn-primary rounded-pill m-1" (click)="onBtnBgClick()">
+      <i class="fa fa-image"></i> Background
+    </button>
+  </ng-container>
+</div>
+
+<router-outlet></router-outlet>

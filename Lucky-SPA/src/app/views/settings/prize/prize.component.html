@@ -1,0 +1,107 @@
+<div class="card bg-light">
+  <div class="card-header d-flex justify-content-between">
+    <h5><i class="fa fa-gift"></i> Prize</h5>
+    <button class="btn btn-sm btn-primary rounded-pill" (click)="resetForm()">
+      <i class="fa fa-plus"></i> New Prize
+    </button>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <!-- Danh sách giải thưởng -->
+      <div class="col-8">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th>Prize Name</th>
+                <th>Qty</th>
+                <th>Spin Time</th>
+                <th>Seq</th>
+                <th>Visible</th>
+                <th>Image</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of prizes">
+                <td>{{item.prizeName}}</td>
+                <td>{{item.qty}}</td>
+                <td>{{item.spinTime}}</td>
+                <td>{{item.seq}}</td>
+                <td>
+                  <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" [id]="item.prizeID"
+                      [checked]="item.visible" (change)="switchPrizeVisible(item.prizeID)">
+                    <label class="custom-control-label" [for]="item.prizeID"></label>
+                  </div>
+                </td>
+                <td>
+                  <img class="img-fluid" width="150px" [alt]="item.image"
+                    [src]="rootUrl + 'images/' + (item.image ? item.image : 'gift-icon.jpg')">
+                </td>
+                <td>
+                  <button class="btn btn-sm btn-block btn-warning rounded-pill"
+                    (click)="updatePrize(item)">Edit</button>
+                  <button class="btn btn-sm btn-block btn-danger rounded-pill"
+                    (click)="deletePrize(item.prizeID)">Delete</button>
+                </td>
+              </tr>
+              <tr *ngIf="prizes.length === 0">
+                <td colspan="100%" class="table-warning text-center font-weight-bold">NO DATA!</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Thêm / Sửa giải thưởng -->
+      <div class="col-4">
+        <form [formGroup]="prizeForm" (ngSubmit)="prizeForm.valid && save()">
+          <input formControlName="prizeID" type="text" hidden="true" name="prizeID" class="form-control">
+          <input formControlName="seq" type="number" hidden="true" name="seq" class="form-control">
+          <div class="form-group">
+            <label class="badge badge-warning rounded-pill">Prize Name</label>
+            <input formControlName="prizeName" type="text" name="prizeName" class="form-control"
+              placeholder="Enter prize name...">
+          </div>
+          <div class="form-group">
+            <label class="badge badge-warning rounded-pill">Quantity</label>
+            <input formControlName="qty" type="number" name="qty" class="form-control" placeholder="Enter quantity...">
+          </div>
+          <div class="form-group">
+            <label class="badge badge-warning rounded-pill">Spin Time</label>
+            <input formControlName="spinTime" type="number" name="spinTime" class="form-control"
+              placeholder="Enter spin time...">
+          </div>
+          <div class="form-group">
+            <label class="badge badge-warning rounded-pill">Sequence</label>
+            <input formControlName="seq" type="number" name="seq" class="form-control"
+              placeholder="Enter sequence...">
+          </div>
+          <div class="form-group row">
+            <div class="col-4">
+              <label class="badge badge-warning rounded-pill">Image</label>
+              <div class="card card-upload">
+                <img class="img-fluid" [src]="prizeImgSrc" />
+                <div class="card-body text-center p-0">
+                  <label class="btn btn-primary upload m-0 w-100">
+                    Upload
+                    <input type="file" class="uploadFile img" value="Upload Photo"
+                      style="width: 0px; height: 0px; overflow: hidden;" (change)="onSelectFile($event)" />
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="col-8 pt-4 text-right">
+              <button type="button" class="btn btn-danger mr-1 rounded-pill">
+                <i class="fa fa-times"></i> Cancel
+              </button>
+              <button type="submit" class="btn btn-success rounded-pill" [disabled]="prizeForm.invalid">
+                <i class="fa fa-check"></i> Save
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

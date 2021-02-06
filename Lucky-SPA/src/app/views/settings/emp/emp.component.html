@@ -1,0 +1,36 @@
+<div class="card bg-light">
+  <div class="card-header">
+    <h5><i class="fa fa-users"></i> Employee</h5>
+  </div>
+  <div class="card-body">
+    <form #employeeForm="ngForm" id="employeeForm" (ngSubmit)="uploadFile()">
+      <div class="row">
+        <div class="col-8">
+          <div class="custom-file mb-3">
+            <input type="file" class="custom-file-input" id="employeeFileInput" name="file" [(ngModel)]="file"
+              accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+              (change)="onFileChange($event)">
+            <label class="custom-file-label" for="employeeFileInput">{{label}}</label>
+          </div>
+          <div class="d-flex justify-content-between">
+            <span><strong>Current employees: </strong>{{employeeCount}}</span>
+            <span>
+              Download template
+              <button type="button" class="badge badge-success" (click)="downloadEmpTempExcel()">
+                <i class="fa fa-file-excel"></i> Excel
+              </button>
+            </span>
+          </div>
+        </div>
+        <div class="col-4">
+          <button type="submit" class="btn-block btn btn-primary rounded-pill mb-2" [disabled]="!file">
+            <i class="fa fa-file-upload"></i> Upload File
+          </button>
+          <button type="button" class="btn-block btn btn-danger rounded-pill" (click)="clearEmployeeList()">
+            <i class="fa fa-user-minus"></i> Clear Employee List
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

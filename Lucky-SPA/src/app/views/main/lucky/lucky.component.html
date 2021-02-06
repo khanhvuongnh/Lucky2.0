@@ -1,0 +1,134 @@
+<!-- Lucky Background -->
+<div class="wrapper">
+  <video class="lucky-background" src="../../../../assets/lucky-background.mp4" autoplay muted loop></video>
+</div>
+
+
+<div class="container-fluid">
+  <!-- Ribbon Prize Name -->
+  <div class="ribbon-prize-name row">
+    <div class="offset-2 col-8">
+      <div class="prize-name">
+        <span>{{selectedPrize.prizeName}}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Spin Items -->
+  <div class="spin-items form-row">
+    <ng-content select="2items"></ng-content>
+
+  </div>
+</div>
+
+<!-- Button Bag -->
+<img class="gift-box-icon" src="../../../../assets/gift-box-icon.png" alt="gift-box-icon"
+  (click)="togglePrizeListVisible(null)">
+
+<!-- Button Spin -->
+<img class="spin-icon" src="../../../../assets/play-icon.png" alt="gift-box-icon">
+
+<div *ngIf="isPrizeListVisible" class="list-group list-prize">
+  <button *ngFor="let prize of prizes" type="button" [ngClass]="prize.prizeID === selectedPrize.prizeID ? 'active': ''"
+    class="list-group-item list-group-item-action" (click)="selectPrize(prize)">{{prize.prizeName}}</button>
+</div>
+
+<!-- Prize Image -->
+<div class="prize-img-wrapper">
+  <img class="img-fluid" [src]="rootUrl + 'images/' + (selectedPrize.image ? selectedPrize.image : 'gift-icon.jpg')"
+    alt="prize-img-wrapper">
+</div>
+
+
+<ng-template #1item>
+  <div class="offset-3 col-6 mb-3">
+    <div class="spin-item"></div>
+  </div>
+</ng-template>
+
+<ng-template #2items>
+  <div class="col-6 mb-3">
+    <div class="spin-item"></div>
+  </div>
+  <div class="col-6 mb-3">
+    <div class="spin-item"></div>
+  </div>
+</ng-template>
+
+<ng-template #3items>
+  <div class="col-6 mb-3">
+    <div class="spin-item"></div>
+  </div>
+  <div class="col-6 mb-3">
+    <div class="spin-item"></div>
+  </div>
+  <div class="offset-3 col-6 mb-3">
+    <div class="spin-item"></div>
+  </div>
+</ng-template>
+
+<ng-template #4items>
+  <div class="col-6 mb-3">
+    <div class="spin-item"></div>
+  </div>
+  <div class="col-6 mb-3">
+    <div class="spin-item"></div>
+  </div>
+  <div class="col-6 mb-3">
+    <div class="spin-item"></div>
+  </div>
+  <div class="col-6 mb-3">
+    <div class="spin-item"></div>
+  </div>
+</ng-template>
+
+<ng-template #5items>
+  <div class="col-4 mb-3">
+    <div class="spin-item"></div>
+  </div>
+  <div class="col-4 mb-3">
+    <div class="spin-item"></div>
+  </div>
+  <div class="col-4 mb-3">
+    <div class="spin-item"></div>
+  </div>
+  <div class="offset-2 col-4 mb-3">
+    <div class="spin-item"></div>
+  </div>
+  <div class="col-4 mb-3">
+    <div class="spin-item"></div>
+  </div>
+</ng-template>
+
+<ng-template #10items>
+  <div class="col-3 mb-3">
+    <div class="spin-item"></div>
+  </div>
+  <div class="col-3 mb-3">
+    <div class="spin-item"></div>
+  </div>
+  <div class="col-3 mb-3">
+    <div class="spin-item"></div>
+  </div>
+  <div class="col-3 mb-3">
+    <div class="spin-item"></div>
+  </div>
+  <div class="col-3 mb-3">
+    <div class="spin-item"></div>
+  </div>
+  <div class="col-3 mb-3">
+    <div class="spin-item"></div>
+  </div>
+  <div class="col-3 mb-3">
+    <div class="spin-item"></div>
+  </div>
+  <div class="col-3 mb-3">
+    <div class="spin-item"></div>
+  </div>
+  <div class="offset-3 col-3 mb-3">
+    <div class="spin-item"></div>
+  </div>
+  <div class="col-3 mb-3">
+    <div class="spin-item"></div>
+  </div>
+</ng-template>

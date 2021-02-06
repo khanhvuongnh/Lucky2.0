@@ -1,0 +1,27 @@
+body {
+  font-size: 1.25rem;
+}
+
+.hidden-area {
+  text-align: right;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 330px;
+  height: 70px;
+  padding: 1rem;
+  z-index: 1001;
+}
+
+.main-background {
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.z-index-1000 {
+  z-index: 1000;
+}
