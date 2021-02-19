@@ -12,58 +12,43 @@ export class AdminService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  getBackground() {
-    return this.http.get<any>(`${this.baseUrl}Admin/GetBackground`);
-  }
+  getBackground = () => this.http.get<any>(`${this.baseUrl}Admin/GetBackground`);
 
-  changeBackground(formData: FormData) {
-    return this.http.post<boolean>(`${this.baseUrl}Admin/ChangeBackground`, formData);
-  }
+  changeBackground = (formData: FormData) => this.http.post<boolean>(`${this.baseUrl}Admin/ChangeBackground`, formData);
 
-  uploadEmployee(formData: FormData) {
-    return this.http.post<OperationResult>(`${this.baseUrl}Admin/UploadEmployee`, formData);
-  }
+  getWatingTime = () => this.http.get<number>(`${this.baseUrl}Admin/GetWatingTime`);
 
-  getEmployeeCount() {
-    return this.http.get<number>(`${this.baseUrl}Admin/GetEmployeeCount`);
-  }
+  changeWatingTime = (watingTime: number) => this.http.post<boolean>(`${this.baseUrl}Admin/ChangeWatingTime`, watingTime);
 
-  clearEmployeeList() {
-    return this.http.get<boolean>(`${this.baseUrl}Admin/ClearEmployeeList`);
-  }
+  uploadEmployee = (formData: FormData) => this.http.post<OperationResult>(`${this.baseUrl}Admin/UploadEmployee`, formData);
 
-  downloadEmpTempExcel() {
-    return this.http.get(`${this.rootUrl}uploads/Lucky_Emp_Template.xlsx`, { responseType: 'blob' })
-      .subscribe((result: Blob) => {
-        const blob = new Blob([result]);
-        const url = window.URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.setAttribute('download', 'Lucky_Emp_Template.xlsx');
-        document.body.appendChild(link);
-        link.click();
-      });
-  }
+  getEmployeeCount = () => this.http.get<number>(`${this.baseUrl}Admin/GetEmployeeCount`);
 
-  addPrize(prize: Prize) {
-    return this.http.post<OperationResult>(`${this.baseUrl}Admin/AddPrize`, prize);
-  }
+  clearEmployeeList = () => this.http.get<boolean>(`${this.baseUrl}Admin/ClearEmployeeList`);
 
-  updatePrize(prize: Prize) {
-    return this.http.post<OperationResult>(`${this.baseUrl}Admin/UpdatePrize`, prize);
-  }
+  addPrize = (prize: Prize) => this.http.post<OperationResult>(`${this.baseUrl}Admin/AddPrize`, prize);
+
+  updatePrize = (prize: Prize) => this.http.post<OperationResult>(`${this.baseUrl}Admin/UpdatePrize`, prize);
+
+  downloadEmpTempExcel = () => this.http.get(`${this.rootUrl}uploads/Lucky_Emp_Template.xlsx`, { responseType: 'blob' })
+    .subscribe((result: Blob) => {
+      const blob = new Blob([result]);
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'Lucky_Emp_Template.xlsx');
+      document.body.appendChild(link);
+      link.click();
+    })
 
   getAllPrizes(hasInvisibleItems: boolean = true) {
     const value = hasInvisibleItems ? 'true' : 'false';
     return this.http.get<Prize[]>(`${this.baseUrl}Admin/GetAllPrizes`, { params: { hasInvisibleItems: value } });
   }
 
-  deletePrize(prizeID: string) {
-    return this.http.get<boolean>(`${this.baseUrl}Admin/DeletePrize`, { params: { prizeID } });
-  }
+  deletePrize = (prizeID: string) => this.http.get<boolean>(`${this.baseUrl}Admin/DeletePrize`, { params: { prizeID } });
 
-  switchPrizeVisible(prizeID: string) {
-    return this.http.get<boolean>(`${this.baseUrl}Admin/SwitchPrizeVisible`, { params: { prizeID } });
-  }
+  switchPrizeVisible = (prizeID: string) => this.http.get<boolean>(`${this.baseUrl}Admin/SwitchPrizeVisible`, { params: { prizeID } });
 
+  clearResultRecords = () => this.http.get<boolean>(`${this.baseUrl}Admin/ClearResultRecords`);
 }

@@ -12,7 +12,7 @@ namespace lucky_api.Models
         public int ID { get; set; }
         public int? PrizeID { get; set; }
         [StringLength(10)]
-        public string EmpID { get; set; }
+        public string EmpCode { get; set; }
         public bool? Visible { get; set; }
     }
 }

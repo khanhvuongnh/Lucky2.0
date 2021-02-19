@@ -1,3 +1,31 @@
-<p>
-  config works!
-</p>
+<div class="card bg-light">
+  <div class="card-header">
+    <h5><i class="fa fa-cog"></i> Config</h5>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-9">
+        <img class="img-fluid rounded" [src]="backgroundUrl" alt="background.jpg">
+      </div>
+      <div class="col-3">
+        <label class="btn btn-primary btn-block rounded-pill">
+          <i class="fa fa-sync-alt"></i> Change Background
+          <input type="file" hidden="true" (change)="onSelectFile($event)" accept="image/*" />
+        </label>
+        <button type="button" class="btn btn-block btn-danger rounded-pill" (click)="clearResultRecords()">
+          <i class="fa fa-trash"></i> Clear Result Records
+        </button>
+        <div class="form-group mt-3">
+          <label>Wating Time (seconds)</label>
+          <div class="input-group">
+            <input type="number" class="form-control" placeholder="Enter wating time..." [(ngModel)]="watingTime">
+            <div class="input-group-append">
+              <button type="button" class="btn btn-primary" (click)="saveWatingTime()"><i
+                  class="fa fa-save"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

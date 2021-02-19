@@ -1,0 +1,177 @@
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -9;
+}
+
+.wrapper .lucky-background {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.gift-box-icon, .spin-icon {
+  width: 7rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  position: absolute;
+  z-index: 1;
+  right: 2rem;
+  top: 2rem;
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: inset 0 0 5px #000000;
+  border: double 10px transparent;
+  background-image: linear-gradient(white, white), radial-gradient(circle at top left, #EFD313, #FF4200);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+.spin-icon {
+  right: 10rem;
+}
+
+.gift-box-icon:hover, .spin-icon:hover {
+  transform: scale(1.1, 1.1);
+}
+
+.list-prize {
+  position: absolute;
+  width: 25rem;
+  z-index: 2;
+  right: 6rem;
+  top: 10rem;
+  font-size: 1.25rem;
+  max-height: 70vh;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.list-prize .list-group-item {
+  font-weight: bold;
+  color: #D70000;
+  
+}
+
+.list-prize .active {
+  color: #D70000;
+  background: radial-gradient(circle at top right, #EFD313, #F6EEA4);
+  border-color: #FEEC00;
+}
+
+.prize-name {
+  margin: 3rem;
+  box-shadow: inset 0 0 5px #000000;
+  border: double 10px transparent;
+  background-image: linear-gradient(white, white), radial-gradient(circle at top left, #EFD313, #FF4200);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  font-size: 3rem;
+  font-weight: bold;
+  color: red;
+  text-align: center;
+  border-radius: 3rem;
+}
+
+.prize-img-wrapper, .spin-remain-wrapper {
+  width: 12rem;
+  bottom: 3rem;
+  position: absolute;
+  left: 3rem;
+  padding: .75rem;
+}
+
+.spin-remain-wrapper {
+  left: unset;
+  right: 3rem;
+}
+
+.prize-img-wrapper img, .spin-remain-wrapper div {
+  border-radius: 2rem;
+  border: double 10px transparent;
+  background-image: linear-gradient(white, white), radial-gradient(circle at top left, #EFD313, #FF4200);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.spin-remain-wrapper div {
+  width: 100%;
+  height: 10.5rem;
+  line-height: 9.5rem;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: red;
+}
+
+.spin-items {
+  margin: 0 3rem;
+  text-align: center;
+}
+
+.btn-result-areas {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translate(-50%);
+  width: 45rem;
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Dancing Script';
+}
+
+.btn-result, .btn-reset {
+  box-shadow: inset 0 0 5px #000000;
+  border: double 5px transparent;
+  background-image: linear-gradient(white, white), radial-gradient(circle at top left, #2c7873, #52de97);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #272727;
+  text-align: center;
+  border-radius: 3rem;
+  transition: all 0.2s ease-in-out;
+  width: 20rem;
+  cursor: pointer;
+}
+
+.btn-reset {
+  background-image: linear-gradient(white, white), radial-gradient(circle at top left, #d37815, #cad315);
+}
+
+.btn-result:hover, .btn-reset:hover {
+  transform: scale(1.1, 1.1);
+}
+
+seven-seg [display] {
+  fill: #54e346 !important;
+  width: 100% !important;
+  padding: .75rem !important;
+  border: .75rem solid #54e346 !important;
+  height: auto !important;
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+}
+
+seven-seg [segmentOff] {
+  opacity: .1 !important;
+}
+
+.card-header h1 {
+  margin: unset;
+}
+
+.card-body h3 {
+  font-weight: bold;
+}
+
+::-webkit-scrollbar {
+    width: 0;  
+    background: transparent;
+}

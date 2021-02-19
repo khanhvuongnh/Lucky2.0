@@ -16,6 +16,5 @@ namespace lucky_api.Models
         public string EmpName { get; set; }
         [StringLength(50)]
         public string EmpDept { get; set; }
-        public bool Visible { get; set; }
     }
 }

@@ -8,5 +8,7 @@ namespace lucky_api._Services.Interfaces
     {
         Task<object> GetBackground();
         Task<bool> ChangeBackground(IFormFile file);
+        Task<int> GetWatingTime();
+        Task<bool> ChangeWatingTime(int watingTime);
     }
 }

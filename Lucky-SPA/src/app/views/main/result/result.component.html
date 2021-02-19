@@ -1,3 +1,53 @@
-<p>
-  result works!
-</p>
+<!-- Lucky Background -->
+<div class="wrapper">
+  <video class="lucky-background" src="../../../../assets/lucky-background.mp4" autoplay muted loop></video>
+</div>
+
+<!-- Button Bag -->
+<img class="gift-box-icon" src="../../../../assets/gift-box-icon.png" alt="gift-box-icon"
+  (click)="togglePrizeListVisible(null)">
+
+<!-- List Prizes -->
+<div *ngIf="isPrizeListVisible" class="list-group list-prize">
+  <button *ngFor="let prize of prizes" type="button" [ngClass]="prize.prizeID === selectedPrize.prizeID ? 'active': ''"
+    class="list-group-item list-group-item-action" (click)="selectPrize(prize)">{{prize.prizeName}}</button>
+</div>
+
+<div class="container-fluid">
+  <div class="main-content">
+    <div class="row justify-content-center">
+      <div class="col-10">
+        <div class="prize-name">
+          <span>{{selectedPrize.prizeName}}</span>
+        </div>
+        <div class="prize-records" *ngIf="spinData.length > 0">
+          <div class="spin-items form-row justify-content-center">
+            <div [class]="item.cssClass" *ngFor="let item of spinData">
+              <div class="card border-danger text-center">
+                <div class="card-header text-danger">
+                  <h1>{{item.empCode}}</h1>
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">{{item.empName}}</h3>
+                  <h4 class="card-text">{{item.empDept}}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="prize-img-wrapper">
+          <div class="custom-control custom-switch switch-all-result">
+            <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]="isShowAllRecords"
+              (ngModelChange)="selectPrize(selectedPrize)">
+            <label class="custom-control-label" for="customSwitch1">Show All Records</label>
+          </div>
+          <img class="img-fluid"
+            [src]="rootUrl + 'images/' + (selectedPrize.image ? selectedPrize.image : 'gift-icon.jpg')"
+            alt="prize-img-wrapper">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

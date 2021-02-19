@@ -68,6 +68,13 @@ namespace lucky_api._Services.Services
             }
         }
 
+        public async Task<bool> ChangeWatingTime(int watingTime)
+        {
+            var model = await _configRepository.FindAll().FirstOrDefaultAsync();
+            model.WatingTime = watingTime;
+            return await _configRepository.Save();
+        }
+
         public async Task<object> GetBackground()
         {
             var item = await _configRepository.FindAll().FirstOrDefaultAsync();
@@ -76,6 +83,12 @@ namespace lucky_api._Services.Services
                 return new { background = item.Background };
             }
             return new { background = string.Empty };
+        }
+
+        public async Task<int> GetWatingTime()
+        {
+            var item = await _configRepository.FindAll().FirstOrDefaultAsync();
+            return item.WatingTime.Value;
         }
     }
 }

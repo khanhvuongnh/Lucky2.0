@@ -15,10 +15,12 @@ namespace lucky_api.Controllers
         private readonly IEmpService _empService;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IPrizeService _prizeService;
+        private readonly IRecordService _recordService;
 
-        public AdminController(IConfigService configService, IEmpService empService, IWebHostEnvironment webHostEnvironment,
-        IPrizeService prizeService)
+        public AdminController(IConfigService configService, IEmpService empService,
+            IWebHostEnvironment webHostEnvironment, IPrizeService prizeService, IRecordService recordService)
         {
+            _recordService = recordService;
             _webHostEnvironment = webHostEnvironment;
             _prizeService = prizeService;
             _empService = empService;
@@ -31,10 +33,22 @@ namespace lucky_api.Controllers
             return Ok(await _configService.GetBackground());
         }
 
+        [HttpGet("GetWatingTime")]
+        public async Task<IActionResult> GetWatingTime()
+        {
+            return Ok(await _configService.GetWatingTime());
+        }
+
         [HttpPost("ChangeBackground")]
         public async Task<IActionResult> ChangeBackground([FromForm] IFormFile file)
         {
             return Ok(await _configService.ChangeBackground(file));
+        }
+
+        [HttpPost("ChangeWatingTime")]
+        public async Task<IActionResult> ChangeWatingTime([FromBody] int watingTime)
+        {
+            return Ok(await _configService.ChangeWatingTime(watingTime));
         }
 
         [HttpPost("UploadEmployee")]
@@ -83,6 +97,12 @@ namespace lucky_api.Controllers
         public async Task<IActionResult> SwitchPrizeVisible(int prizeID)
         {
             return Ok(await _prizeService.SwitchPrizeVisible(prizeID));
+        }
+
+        [HttpGet("ClearResultRecords")]
+        public async Task<IActionResult> ClearResultRecords()
+        {
+            return Ok(await _recordService.ClearResultRecords());
         }
     }
 }

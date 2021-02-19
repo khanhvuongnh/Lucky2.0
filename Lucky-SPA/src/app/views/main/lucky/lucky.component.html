@@ -6,18 +6,34 @@
 
 <div class="container-fluid">
   <!-- Ribbon Prize Name -->
-  <div class="ribbon-prize-name row">
-    <div class="offset-2 col-8">
+  <div class="ribbon-prize-name row justify-content-center">
+    <div class="col-8">
       <div class="prize-name">
         <span>{{selectedPrize.prizeName}}</span>
       </div>
     </div>
   </div>
 
-  <!-- Spin Items -->
-  <div class="spin-items form-row">
-    <ng-content select="2items"></ng-content>
+  <!-- Spin Items EmpCode -->
+  <div *ngIf="numberOfSpinAreas > 0 && !isResultContentShow" class="spin-items form-row justify-content-center">
+    <div [class]="item.cssClass" *ngFor="let item of spinData">
+      <seven-seg digits="6" [value]="'1000000' + item.empCode"></seven-seg>
+    </div>
+  </div>
 
+  <!-- Spin Item Result Content -->
+  <div *ngIf="numberOfSpinAreas > 0 && isResultContentShow" class="spin-items form-row justify-content-center">
+    <div [class]="item.cssClass" *ngFor="let item of spinData">
+      <div class="card border-danger">
+        <div class="card-header text-danger">
+          <h1>{{item.empCode}}</h1>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">{{item.empName}}</h3>
+          <h4 class="card-text">{{item.empDept}}</h4>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -26,8 +42,9 @@
   (click)="togglePrizeListVisible(null)">
 
 <!-- Button Spin -->
-<img class="spin-icon" src="../../../../assets/play-icon.png" alt="gift-box-icon">
+<img class="spin-icon" src="../../../../assets/play-icon.png" alt="gift-box-icon" (click)="spinNumbers()">
 
+<!-- List Prizes -->
 <div *ngIf="isPrizeListVisible" class="list-group list-prize">
   <button *ngFor="let prize of prizes" type="button" [ngClass]="prize.prizeID === selectedPrize.prizeID ? 'active': ''"
     class="list-group-item list-group-item-action" (click)="selectPrize(prize)">{{prize.prizeName}}</button>
@@ -39,96 +56,18 @@
     alt="prize-img-wrapper">
 </div>
 
+<!-- Spin Remain -->
+<div class="spin-remain-wrapper">
+  <div>{{spinRemain.current}}{{spinRemain.current != null ? '/' : ''}}{{spinRemain.total}}</div>
+</div>
 
-<ng-template #1item>
-  <div class="offset-3 col-6 mb-3">
-    <div class="spin-item"></div>
-  </div>
-</ng-template>
+<!-- Button Show Result -->
+<div class="btn-result-areas" *ngIf="isResultButtonShow && spinData[0].empCode">
+  <div class="btn-result" (click)="toggleResult()">Show Result</div>
+  <div class="btn-reset" (click)="resetResult()">Reset</div>
+</div>
 
-<ng-template #2items>
-  <div class="col-6 mb-3">
-    <div class="spin-item"></div>
-  </div>
-  <div class="col-6 mb-3">
-    <div class="spin-item"></div>
-  </div>
-</ng-template>
-
-<ng-template #3items>
-  <div class="col-6 mb-3">
-    <div class="spin-item"></div>
-  </div>
-  <div class="col-6 mb-3">
-    <div class="spin-item"></div>
-  </div>
-  <div class="offset-3 col-6 mb-3">
-    <div class="spin-item"></div>
-  </div>
-</ng-template>
-
-<ng-template #4items>
-  <div class="col-6 mb-3">
-    <div class="spin-item"></div>
-  </div>
-  <div class="col-6 mb-3">
-    <div class="spin-item"></div>
-  </div>
-  <div class="col-6 mb-3">
-    <div class="spin-item"></div>
-  </div>
-  <div class="col-6 mb-3">
-    <div class="spin-item"></div>
-  </div>
-</ng-template>
-
-<ng-template #5items>
-  <div class="col-4 mb-3">
-    <div class="spin-item"></div>
-  </div>
-  <div class="col-4 mb-3">
-    <div class="spin-item"></div>
-  </div>
-  <div class="col-4 mb-3">
-    <div class="spin-item"></div>
-  </div>
-  <div class="offset-2 col-4 mb-3">
-    <div class="spin-item"></div>
-  </div>
-  <div class="col-4 mb-3">
-    <div class="spin-item"></div>
-  </div>
-</ng-template>
-
-<ng-template #10items>
-  <div class="col-3 mb-3">
-    <div class="spin-item"></div>
-  </div>
-  <div class="col-3 mb-3">
-    <div class="spin-item"></div>
-  </div>
-  <div class="col-3 mb-3">
-    <div class="spin-item"></div>
-  </div>
-  <div class="col-3 mb-3">
-    <div class="spin-item"></div>
-  </div>
-  <div class="col-3 mb-3">
-    <div class="spin-item"></div>
-  </div>
-  <div class="col-3 mb-3">
-    <div class="spin-item"></div>
-  </div>
-  <div class="col-3 mb-3">
-    <div class="spin-item"></div>
-  </div>
-  <div class="col-3 mb-3">
-    <div class="spin-item"></div>
-  </div>
-  <div class="offset-3 col-3 mb-3">
-    <div class="spin-item"></div>
-  </div>
-  <div class="col-3 mb-3">
-    <div class="spin-item"></div>
-  </div>
-</ng-template>
+<div>
+  <audio #winnerAudio src="../../../../assets/audio/fanfare-winner.mp3"></audio>
+  <audio #countingAudio src="../../../../assets/audio/game-countdown.mp3"></audio>
+</div>
