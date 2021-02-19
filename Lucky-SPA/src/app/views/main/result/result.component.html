@@ -22,7 +22,7 @@
         </div>
         <div class="prize-records" *ngIf="spinData.length > 0">
           <div class="spin-items form-row justify-content-center">
-            <div [class]="item.cssClass" *ngFor="let item of spinData">
+            <div class="col-4 mb-3" *ngFor="let item of spinData">
               <div class="card border-danger text-center">
                 <div class="card-header text-danger">
                   <h1>{{item.empCode}}</h1>

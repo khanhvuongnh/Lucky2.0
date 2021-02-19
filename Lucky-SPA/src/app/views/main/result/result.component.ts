@@ -55,26 +55,11 @@ export class ResultComponent implements OnInit {
     this.getPrizeRecords(this.selectedPrize.prizeID, this.isShowAllRecords);
   }
 
-  customCssClass() {
-    let result = '';
-    if (this.numberOfSpinAreas <= 1) {
-      result = 'col-8 mb-3';
-    } else if (this.numberOfSpinAreas <= 4) {
-      result = 'col-6 mb-3';
-    } else if (this.numberOfSpinAreas <= 6) {
-      result = 'col-4 mb-3';
-    } else {
-      result = 'col-3 mb-3';
-    }
-    return result;
-  }
-
   getPrizeRecords(prizeID: number, isShowAllRecords: boolean = false) {
-    const cssClass = this.customCssClass();
     this.mainService.getPrizeRecords(prizeID, isShowAllRecords).subscribe(res => {
       res.forEach(item => {
         this.spinData.push({
-          cssClass,
+          cssClass: '',
           empCode: item.empCode,
           empDept: item.empDept,
           empName: item.empName,
