@@ -11,7 +11,7 @@ import { SweetAlertService } from 'src/app/_core/_services/sweet-alert.service';
 export class EmpComponent implements OnInit {
   @ViewChild('employeeForm') employeeForm: NgForm;
   file: File;
-  label = 'Choose file...';
+  label = 'Choose a file...';
   employeeCount: number;
 
   constructor(
@@ -39,7 +39,8 @@ export class EmpComponent implements OnInit {
           this.sweetAlertService.success('Success!', res.message);
           this.getEmployeeCount();
           this.employeeForm.reset();
-          this.label = 'Choose file...';
+          this.label = 'Choose a file...';
+          this.file = null;
         } else {
           this.sweetAlertService.error('Error!', res.message);
         }

@@ -13,7 +13,8 @@
   object-fit: fill;
 }
 
-.gift-box-icon, .spin-icon {
+.gift-box-icon,
+.spin-icon {
   width: 7rem;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -25,7 +26,7 @@
   background-color: white;
   box-shadow: inset 0 0 5px #000000;
   border: double 10px transparent;
-  background-image: linear-gradient(white, white), radial-gradient(circle at top left, #EFD313, #FF4200);
+  background-image: linear-gradient(white, white), radial-gradient(circle at top left, #efd313, #ff4200);
   background-origin: border-box;
   background-clip: content-box, border-box;
 }
@@ -34,7 +35,8 @@
   right: 10rem;
 }
 
-.gift-box-icon:hover, .spin-icon:hover {
+.gift-box-icon:hover,
+.spin-icon:hover {
   transform: scale(1.1, 1.1);
 }
 
@@ -52,21 +54,20 @@
 
 .list-prize .list-group-item {
   font-weight: bold;
-  color: #D70000;
-  
+  color: #d70000;
 }
 
 .list-prize .active {
-  color: #D70000;
-  background: radial-gradient(circle at top right, #EFD313, #F6EEA4);
-  border-color: #FEEC00;
+  color: #d70000;
+  background: radial-gradient(circle at top right, #efd313, #f6eea4);
+  border-color: #feec00;
 }
 
 .prize-name {
   margin: 3rem;
   box-shadow: inset 0 0 5px #000000;
   border: double 10px transparent;
-  background-image: linear-gradient(white, white), radial-gradient(circle at top left, #EFD313, #FF4200);
+  background-image: linear-gradient(white, white), radial-gradient(circle at top left, #efd313, #ff4200);
   background-origin: border-box;
   background-clip: content-box, border-box;
   font-size: 3rem;
@@ -76,12 +77,13 @@
   border-radius: 3rem;
 }
 
-.prize-img-wrapper, .spin-remain-wrapper {
+.prize-img-wrapper,
+.spin-remain-wrapper {
   width: 12rem;
   bottom: 3rem;
   position: absolute;
   left: 3rem;
-  padding: .75rem;
+  padding: 0.75rem;
 }
 
 .spin-remain-wrapper {
@@ -89,10 +91,11 @@
   right: 3rem;
 }
 
-.prize-img-wrapper img, .spin-remain-wrapper div {
+.prize-img-wrapper img,
+.spin-remain-wrapper div {
   border-radius: 2rem;
   border: double 10px transparent;
-  background-image: linear-gradient(white, white), radial-gradient(circle at top left, #EFD313, #FF4200);
+  background-image: linear-gradient(white, white), radial-gradient(circle at top left, #efd313, #ff4200);
   background-origin: border-box;
   background-clip: content-box, border-box;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -122,10 +125,11 @@
   width: 45rem;
   display: flex;
   justify-content: space-between;
-  font-family: 'Dancing Script';
+  font-family: "Dancing Script";
 }
 
-.btn-result, .btn-reset {
+.btn-result,
+.btn-reset {
   box-shadow: inset 0 0 5px #000000;
   border: double 5px transparent;
   background-image: linear-gradient(white, white), radial-gradient(circle at top left, #2c7873, #52de97);
@@ -145,22 +149,23 @@
   background-image: linear-gradient(white, white), radial-gradient(circle at top left, #d37815, #cad315);
 }
 
-.btn-result:hover, .btn-reset:hover {
+.btn-result:hover,
+.btn-reset:hover {
   transform: scale(1.1, 1.1);
 }
 
 seven-seg [display] {
-  fill: #54e346 !important;
+  fill: #ff5200 !important;
   width: 100% !important;
-  padding: .75rem !important;
-  border: .75rem solid #54e346 !important;
+  padding: 0.75rem !important;
+  border: 0.75rem solid #fa9905 !important;
   height: auto !important;
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
 }
 
 seven-seg [segmentOff] {
-  opacity: .1 !important;
+  opacity: 0.1 !important;
 }
 
 .card-header h1 {
@@ -172,6 +177,6 @@ seven-seg [segmentOff] {
 }
 
 ::-webkit-scrollbar {
-    width: 0;  
-    background: transparent;
+  width: 0;
+  background: transparent;
 }
