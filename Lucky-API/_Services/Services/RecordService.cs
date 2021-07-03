@@ -88,12 +88,17 @@ namespace lucky_api._Services.Services
             var models = new List<Record>();
             while (flag)
             {
-                var emp = await _empRepository.FindAll(x => x.EmpCode != null).OrderBy(x => Guid.NewGuid()).FirstOrDefaultAsync();
+                var emp = await _empRepository
+                    .FindAll(x => x.EmpCode != null)
+                    .OrderBy(x => Guid.NewGuid())
+                    .FirstOrDefaultAsync();
                 if (emp == null)
                     continue;
 
-                var isWinner = await _recordRepository.FindAll().AnyAsync(x => x.EmpCode == emp.EmpCode);
-                if (isWinner)
+                var hasRecord = await _recordRepository.FindAll().AnyAsync(x => x.EmpCode == emp.EmpCode);
+                var isWinner = result.Any(x => x.EmpCode == emp.EmpCode);
+
+                if (hasRecord || isWinner)
                     continue;
 
                 var model = new Record
