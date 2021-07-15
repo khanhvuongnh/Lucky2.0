@@ -4,13 +4,11 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./views/main/main.module')
-      .then(m => m.MainModule)
+    loadChildren: () => import('./views/main/main.module').then(m => m.MainModule)
   },
   {
-    path: 'settings',
-    loadChildren: () => import('./views/settings/settings.module')
-      .then(m => m.SettingsModule)
+    path: 'cai-dat',
+    loadChildren: () => import('./views/settings/settings.module').then(m => m.SettingsModule)
   }
 ];
 

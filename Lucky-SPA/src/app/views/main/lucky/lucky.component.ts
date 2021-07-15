@@ -119,17 +119,17 @@ export class LuckyComponent implements OnInit {
   spinNumbers() {
     // Kiểm tra đã upload data chưa
     if (this.empCount === 0) {
-      return this.sweetAlertService.warning('No Data', 'Please upload data to continue.');
+      return this.sweetAlertService.warning('Không có dữ liệu', 'Vui lòng tải lên danh sách CB-CNV.');
     }
 
     // Kiểm tra đã chọn giải hay chưa
     if (this.selectedPrize.prizeID === 0) {
-      return this.sweetAlertService.warning('Invalid Prize', 'Please choose a prize to continue.');
+      return this.sweetAlertService.warning('Không hợp lệ', 'Vui lòng chọn một giải thưởng.');
     }
 
     // Kiểm tra giải đã quay hết chưa
     if (!this.spinRemain.isValid) {
-      return this.sweetAlertService.warning('Invalid Prize', 'Prize has already been done.');
+      return this.sweetAlertService.warning('Không hợp lệ', 'Giải thưởng đã hoàn tất.');
     }
 
     // Reset giao diện

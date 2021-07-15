@@ -1,5 +1,5 @@
 .btn-primary.upload {
-  border-radius: 0 0 .25rem .25rem;
+  border-radius: 0 0 0.25rem 0.25rem;
   height: 40px;
 }
 
@@ -13,5 +13,15 @@
 
 .table-responsive {
   max-height: 75vh;
-  overflow:scroll;
+  overflow: scroll;
+
+  thead {
+    tr {
+      text-align: center;
+
+      th {
+        vertical-align: middle;
+      }
+    }
+  }
 }

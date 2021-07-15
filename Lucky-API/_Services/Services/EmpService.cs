@@ -2,10 +2,8 @@ using System.IO;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using lucky_api._Repositories.Interfaces;
 using lucky_api._Services.Interfaces;
-using lucky_api.Dtos;
 using lucky_api.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -56,7 +54,7 @@ namespace lucky_api._Services.Services
         {
             // B1: Lưu file vào wwwroot
             if (file == null)
-                return new OperationResult { Success = false, Message = "File not found." };
+                return new OperationResult { Success = false, Message = "Không tìm thấy tập tin." };
 
             var extension = Path.GetExtension(file.FileName).ToLower();
             var uploadFile = $"Lucky_Emp_Data{extension}";
@@ -81,7 +79,7 @@ namespace lucky_api._Services.Services
             }
             catch (System.Exception)
             {
-                return new OperationResult { Success = false, Message = "File upload failed." };
+                return new OperationResult { Success = false, Message = "Đã có lỗi xảy ra khi tải tập tin lên." };
             }
 
             // B2: Đọc file và lưu dữ liệu vào DB
@@ -96,7 +94,7 @@ namespace lucky_api._Services.Services
             if (worksheet.Cells[1, 1].Value.ToString() != "EmpCode" ||
                 worksheet.Cells[1, 2].Value.ToString() != "EmpDept" ||
                 worksheet.Cells[1, 3].Value.ToString() != "EmpName")
-                return new OperationResult { Success = false, Message = "File format is not valid. Make sure file begins with 'EmpCode', 'EmpDept', 'EmpName'" };
+                return new OperationResult { Success = false, Message = "Định dạng tập tin không hợp lệ. Hãy chắc rằng tập tin bắt đầu bằng 'EmpCode', 'EmpDept', 'EmpName'" };
 
             for (int i = 2; i <= rows; i++)
             {
@@ -113,11 +111,11 @@ namespace lucky_api._Services.Services
             try
             {
                 await _empRepository.Save();
-                return new OperationResult { Success = true, Message = "Employee data was successfully uploaded" };
+                return new OperationResult { Success = true, Message = "Danh sách đã được tải lên" };
             }
             catch (System.Exception)
             {
-                return new OperationResult { Success = false, Message = "Uploading employee data failed on save." };
+                return new OperationResult { Success = false, Message = "Tải lên danh sách có lỗi khi lưu." };
             }
         }
     }

@@ -3,13 +3,13 @@
 <div class="hidden-area" (mouseenter)="isHiddenAreaVisible = true" (mouseleave)="isHiddenAreaVisible = false">
   <ng-container *ngIf="isHiddenAreaVisible">
     <button class="btn btn-sm btn-success rounded-pill m-1" [routerLink]="['/']">
-      <i class="fa fa-home"></i> Home
+      <i class="fa fa-home"></i> Trang Chủ
     </button>
-    <button class="btn btn-sm btn-danger rounded-pill m-1" [routerLink]="['/settings']">
-      <i class="fa fa-cog"></i> Settings
+    <button class="btn btn-sm btn-danger rounded-pill m-1" [routerLink]="['cai-dat']">
+      <i class="fa fa-cog"></i> Cài Đặt
     </button>
     <button class="btn btn-sm btn-primary rounded-pill m-1" (click)="onBtnBgClick()">
-      <i class="fa fa-image"></i> Background
+      <i class="fa fa-image"></i> Hình Nền
     </button>
   </ng-container>
 </div>

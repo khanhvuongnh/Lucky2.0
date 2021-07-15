@@ -17,12 +17,12 @@ const routes: Routes = [
         component: HomeComponent
       },
       {
-        path: 'lucky',
+        path: 'quay-so',
         // resolve: { res: AuditConformOrNonUpdateResolver },
         component: LuckyComponent
       },
       {
-        path: 'result',
+        path: 'ket-qua',
         // resolve: { res: AuditConformOrNonUpdateResolver },
         component: ResultComponent
       }

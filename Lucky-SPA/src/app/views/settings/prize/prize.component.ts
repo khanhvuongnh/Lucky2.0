@@ -55,9 +55,9 @@ export class PrizeComponent implements OnInit {
         if (res.success) {
           this.getData();
           this.resetForm();
-          this.sweetAlertService.success('Success!', res.message);
+          this.sweetAlertService.success('Thành công!', res.message);
         } else {
-          this.sweetAlertService.error('Error!', res.message);
+          this.sweetAlertService.error('Có lỗi!', res.message);
         }
       }, (error) => {
         console.log(error);
@@ -67,9 +67,9 @@ export class PrizeComponent implements OnInit {
         if (res.success) {
           this.getData();
           this.resetForm();
-          this.sweetAlertService.success('Success!', res.message);
+          this.sweetAlertService.success('Thành công!', res.message);
         } else {
-          this.sweetAlertService.error('Error!', res.message);
+          this.sweetAlertService.error('Có lỗi!', res.message);
         }
       }, (error) => {
         console.log(error);
@@ -85,12 +85,12 @@ export class PrizeComponent implements OnInit {
       if (fileNameExtension !== 'jpg' && fileNameExtension !== 'jpeg'
         && fileNameExtension !== 'png' && fileNameExtension !== 'JPG'
         && fileNameExtension !== 'JPEG' && fileNameExtension !== 'PNG') {
-        return this.sweetAlertService.warning('Invalid File Format', 'Allowed file extensions are .jpg, .png, .jpeg');
+        return this.sweetAlertService.warning('Tập tin không hợp lệ', 'Vui lòng tải lên tập tin có định dạng (.jpg), (.png), (.jpeg)');
       }
 
       // Images cannot be larger than 5MB
       if (fileZise > 5242880) {
-        return this.sweetAlertService.warning('Please select a File cannot be larger than 5MB');
+        return this.sweetAlertService.warning('Tập tin không hợp lệ', 'Tập tin tải lên không được quá 5MB.');
       }
 
       // Read file as data url
@@ -108,13 +108,13 @@ export class PrizeComponent implements OnInit {
   }
 
   deletePrize(prizeID: string) {
-    this.sweetAlertService.confirm('Delete Prize', 'Are you sure you want to delete this prize?', () => {
+    this.sweetAlertService.confirm('Xoá giải thưởng?', 'Giải thưởng đã xoá thì không thể khôi phục.', () => {
       this.adminService.deletePrize(prizeID).subscribe(res => {
         if (res) {
           this.getData();
-          this.sweetAlertService.success('Success!', 'Prize was successfully deleted.');
+          this.sweetAlertService.success('Thành công!', 'Giải thưởng đã được xoá.');
         } else {
-          this.sweetAlertService.error('Error!', 'Deleting prize failed on save.');
+          this.sweetAlertService.error('Có lỗi!', 'Xoá giải thưởng có lỗi khi lưu.');
         }
       }, (error) => {
         console.log(error);
@@ -123,7 +123,6 @@ export class PrizeComponent implements OnInit {
   }
 
   updatePrize(prize: Prize) {
-    console.log('updatePrize', prize);
     // Cập nhật link hình ảnh
     if (prize.image) {
       this.prizeImgSrc = `${this.rootUrl}images/${prize.image}`;

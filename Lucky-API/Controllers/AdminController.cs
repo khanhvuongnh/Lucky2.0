@@ -1,5 +1,3 @@
-using System.IO;
-using System.Reflection;
 using System.Threading.Tasks;
 using lucky_api._Services.Interfaces;
 using lucky_api.Models;

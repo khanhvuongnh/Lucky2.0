@@ -11,7 +11,7 @@ import { SweetAlertService } from 'src/app/_core/_services/sweet-alert.service';
 export class EmpComponent implements OnInit {
   @ViewChild('employeeForm') employeeForm: NgForm;
   file: File;
-  label = 'Choose a file...';
+  label = 'Chọn một tập tin (.xlsx)...';
   employeeCount: number;
 
   constructor(
@@ -36,19 +36,19 @@ export class EmpComponent implements OnInit {
       formData.append('file', this.file);
       this.adminService.uploadEmployee(formData).subscribe(res => {
         if (res.success) {
-          this.sweetAlertService.success('Success!', res.message);
+          this.sweetAlertService.success('Thành công!', res.message);
           this.getEmployeeCount();
           this.employeeForm.reset();
-          this.label = 'Choose a file...';
+          this.label = 'Chọn một tập tin (.xlsx)...';
           this.file = null;
         } else {
-          this.sweetAlertService.error('Error!', res.message);
+          this.sweetAlertService.error('Có lỗi!', res.message);
         }
       }, (error) => {
         console.log(error);
       });
     } else {
-      return this.sweetAlertService.error('Invalid File', 'Please select a excel file to upload.');
+      return this.sweetAlertService.error('Tập tin không hợp lệ', 'Vui lòng chọn một tập tin (.xlsx) để tải lên.');
     }
   }
 
@@ -59,13 +59,13 @@ export class EmpComponent implements OnInit {
   }
 
   clearEmployeeList() {
-    this.sweetAlertService.confirm('Remove Employee Data', 'Are you sure you want to remove employee data?', () => {
+    this.sweetAlertService.confirm('Xoá danh sách?', 'Danh sách đã xoá thì không thể khôi phục.', () => {
       this.adminService.clearEmployeeList().subscribe(res => {
         if (res) {
-          this.sweetAlertService.success('Success!', 'Employee data was successfully removed.');
+          this.sweetAlertService.success('Thành công!', 'Danh sách đã được xoá.');
           this.getEmployeeCount();
         } else {
-          this.sweetAlertService.error('Error!', 'Removing employee data failed on save.');
+          this.sweetAlertService.error('Có lỗi!', 'Xoá danh sách có lỗi khi lưu.');
         }
       }, (error) => {
         console.log(error);

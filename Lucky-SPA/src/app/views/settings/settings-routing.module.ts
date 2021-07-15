@@ -16,15 +16,15 @@ const routes: Routes = [
         component: SettingsHomeComponent
       },
       {
-        path: 'emp',
+        path: 'danh-sach',
         component: EmpComponent
       },
       {
-        path: 'prize',
+        path: 'giai-thuong',
         component: PrizeComponent
       },
       {
-        path: 'config',
+        path: 'cau-hinh',
         component: ConfigComponent
       }
     ]

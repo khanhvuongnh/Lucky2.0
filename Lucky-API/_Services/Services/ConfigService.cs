@@ -1,5 +1,4 @@
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using lucky_api._Repositories.Interfaces;
 using lucky_api._Services.Interfaces;

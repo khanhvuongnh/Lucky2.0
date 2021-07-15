@@ -30,11 +30,11 @@ namespace lucky_api._Services.Services
             try
             {
                 await _prizeRepository.Save();
-                return new OperationResult { Success = true, Message = "Prize was successfully added." };
+                return new OperationResult { Success = true, Message = "Giải thưởng đã được tạo mới." };
             }
             catch (System.Exception)
             {
-                return new OperationResult { Success = false, Message = "Adding prize failed on save." };
+                return new OperationResult { Success = false, Message = "Tạo mới giải thưởng có lỗi khi lưu." };
             }
         }
 
@@ -77,7 +77,7 @@ namespace lucky_api._Services.Services
 
             // Kiểm tra tồn tại
             if (model == null)
-                return new OperationResult { Success = false, Message = "Prize not found." };
+                return new OperationResult { Success = false, Message = "Không tìm thấy giải thưởng." };
 
             // Trường hợp cập nhật ảnh mới
             if (model.Image != prize.Image && !string.IsNullOrEmpty(prize.Image))
@@ -97,11 +97,11 @@ namespace lucky_api._Services.Services
             try
             {
                 await _prizeRepository.Save();
-                return new OperationResult { Success = true, Message = "Prize was successfully updated." };
+                return new OperationResult { Success = true, Message = "Giải thưởng đã được cập nhật." };
             }
             catch (System.Exception)
             {
-                return new OperationResult { Success = false, Message = "Updating prize failed on save." };
+                return new OperationResult { Success = false, Message = "Cập nhật giải thưởng có lỗi khi lưu." };
             }
         }
 

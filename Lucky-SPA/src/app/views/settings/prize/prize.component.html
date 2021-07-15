@@ -1,8 +1,8 @@
 <div class="card bg-light">
   <div class="card-header d-flex justify-content-between">
-    <h5><i class="fa fa-gift"></i> Prize</h5>
+    <h5><i class="fa fa-gift"></i> Giải Thưởng</h5>
     <button class="btn btn-sm btn-primary rounded-pill" (click)="resetForm()">
-      <i class="fa fa-plus"></i> New Prize
+      <i class="fa fa-plus"></i> Tạo Mới
     </button>
   </div>
   <div class="card-body">
@@ -13,13 +13,13 @@
           <table class="table">
             <thead class="thead-dark">
               <tr>
-                <th>Prize Name</th>
-                <th>Qty</th>
-                <th>Spin Time</th>
-                <th>Seq</th>
-                <th>Visible</th>
-                <th>Image</th>
-                <th>Action</th>
+                <th>Tên Giải Thưởng</th>
+                <th>Số Lượng</th>
+                <th>Số Lần Quay</th>
+                <th>Vị Trí</th>
+                <th>Trạng Thái</th>
+                <th>Hình Ảnh</th>
+                <th>Hành Động</th>
               </tr>
             </thead>
             <tbody>
@@ -41,13 +41,13 @@
                 </td>
                 <td>
                   <button class="btn btn-sm btn-block btn-warning rounded-pill"
-                    (click)="updatePrize(item)">Edit</button>
+                    (click)="updatePrize(item)">Sửa</button>
                   <button class="btn btn-sm btn-block btn-danger rounded-pill"
-                    (click)="deletePrize(item.prizeID)">Delete</button>
+                    (click)="deletePrize(item.prizeID)">Xoá</button>
                 </td>
               </tr>
               <tr *ngIf="prizes.length === 0">
-                <td colspan="100%" class="table-warning text-center font-weight-bold">NO DATA!</td>
+                <td colspan="100%" class="table-warning text-center font-weight-bold">Không Có Dữ Liệu!</td>
               </tr>
             </tbody>
           </table>
@@ -59,32 +59,32 @@
           <input formControlName="prizeID" type="text" hidden="true" name="prizeID" class="form-control">
           <input formControlName="seq" type="number" hidden="true" name="seq" class="form-control">
           <div class="form-group">
-            <label class="badge badge-warning rounded-pill">Prize Name</label>
+            <label class="badge badge-warning rounded-pill">Tên Giải Thưởng</label>
             <input formControlName="prizeName" type="text" name="prizeName" class="form-control"
-              placeholder="Enter prize name...">
+              placeholder="Nhập tên giải thưởng...">
           </div>
           <div class="form-group">
-            <label class="badge badge-warning rounded-pill">Quantity</label>
-            <input formControlName="qty" type="number" name="qty" class="form-control" placeholder="Enter quantity...">
+            <label class="badge badge-warning rounded-pill">Số Lượng</label>
+            <input formControlName="qty" type="number" name="qty" class="form-control" placeholder="Nhập số lượng...">
           </div>
           <div class="form-group">
-            <label class="badge badge-warning rounded-pill">Spin Time</label>
+            <label class="badge badge-warning rounded-pill">Số Lần Quay</label>
             <input formControlName="spinTime" type="number" name="spinTime" class="form-control"
-              placeholder="Enter spin time...">
+              placeholder="Nhập số lần quay...">
           </div>
           <div class="form-group">
-            <label class="badge badge-warning rounded-pill">Sequence</label>
+            <label class="badge badge-warning rounded-pill">Vị Trí</label>
             <input formControlName="seq" type="number" name="seq" class="form-control"
-              placeholder="Enter sequence...">
+              placeholder="Nhập vị trí...">
           </div>
           <div class="form-group row">
             <div class="col-4">
-              <label class="badge badge-warning rounded-pill">Image</label>
+              <label class="badge badge-warning rounded-pill">Hình Ảnh</label>
               <div class="card card-upload">
                 <img class="img-fluid" [src]="prizeImgSrc" />
                 <div class="card-body text-center p-0">
                   <label class="btn btn-primary upload m-0 w-100">
-                    Upload
+                    Tải Lên
                     <input type="file" class="uploadFile img" value="Upload Photo"
                       style="width: 0px; height: 0px; overflow: hidden;" (change)="onSelectFile($event)" />
                   </label>
@@ -93,10 +93,10 @@
             </div>
             <div class="col-8 pt-4 text-right">
               <button type="button" class="btn btn-danger mr-1 rounded-pill" (click)="resetForm()">
-                <i class="fa fa-times"></i> Cancel
+                <i class="fa fa-times"></i> Huỷ
               </button>
               <button type="submit" class="btn btn-success rounded-pill" [disabled]="prizeForm.invalid">
-                <i class="fa fa-check"></i> Save
+                <i class="fa fa-check"></i> Lưu
               </button>
             </div>
           </div>

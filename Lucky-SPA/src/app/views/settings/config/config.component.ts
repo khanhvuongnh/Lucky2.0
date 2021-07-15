@@ -40,12 +40,12 @@ export class ConfigComponent implements OnInit {
   }
 
   clearResultRecords() {
-    this.sweetAlertService.confirm('Delete Records', 'Are you sure you want to delete result records?', () => {
+    this.sweetAlertService.confirm('Xoá kết quả?', 'Kết quả đã xoá thì không thể khôi phục.', () => {
       this.adminService.clearResultRecords().subscribe(res => {
         if (res) {
-          this.sweetAlertService.success('Deleted!', 'Result Records was successfully deleted.');
+          this.sweetAlertService.success('Thành công!', 'Kết quả đã được xoá.');
         } else {
-          this.sweetAlertService.error('Error!', 'Deleting Result Records failed on save.');
+          this.sweetAlertService.error('Có lỗi!', 'Xoá kết quả có lỗi khi lưu.');
         }
       }, error => {
         console.log(error);
@@ -56,9 +56,9 @@ export class ConfigComponent implements OnInit {
   saveWatingTime() {
     this.adminService.changeWatingTime(this.watingTime).subscribe(res => {
       if (res) {
-        this.sweetAlertService.success('Success!', 'Wating Time was successfully updated.');
+        this.sweetAlertService.success('Thành công!', 'Thời gian quay số đã được cập nhật.');
       } else {
-        this.sweetAlertService.error('Error!', 'Uploading Wating Time failed on save.');
+        this.sweetAlertService.error('Có lỗi!', 'Cập nhật thời gian quay số có lỗi khi lưu.');
       }
     }, error => {
       console.log(error);
@@ -73,12 +73,12 @@ export class ConfigComponent implements OnInit {
       if (fileNameExtension !== 'jpg' && fileNameExtension !== 'jpeg' &&
         fileNameExtension !== 'png' && fileNameExtension !== 'JPG' &&
         fileNameExtension !== 'JPEG' && fileNameExtension !== 'PNG') {
-        return this.sweetAlertService.warning('Invalid File Format', 'Allowed file extensions are .jpg, .png, .jpeg');
+        return this.sweetAlertService.warning('Tập tin không hợp lệ', 'Vui lòng tải lên tập tin có định dạng (.jpg), (.png), (.jpeg)');
       }
 
       // Kiểm tra dung lượng file không quá 5MB
       if (fileZise > 5242880) {
-        return this.sweetAlertService.warning('Invalid File Size', 'File size must be 5MB or smaller.');
+        return this.sweetAlertService.warning('Tập tin không hợp lệ', 'Tập tin tải lên không được quá 5MB.');
       }
 
       // Tiến hành lưu file
@@ -86,7 +86,7 @@ export class ConfigComponent implements OnInit {
       formData.append('file', event.target.files[0]);
       this.adminService.changeBackground(formData).subscribe(res => {
         if (res) {
-          this.sweetAlertService.success('Success!', 'Background was successfully uploaded.');
+          this.sweetAlertService.success('Thành công!', 'Hình nền đã được cập nhật.');
 
           // Nếu thành công thì đổ dữ liệu vào thẻ img
           const reader = new FileReader();
@@ -95,13 +95,13 @@ export class ConfigComponent implements OnInit {
             this.backgroundUrl = e.target.result.toString();
           };
         } else {
-          this.sweetAlertService.error('Error!', 'Uploading background failed on save.');
+          this.sweetAlertService.error('Có lỗi!', 'Cập nhật hình nền có lỗi khi lưu.');
         }
       }, (error) => {
         console.log(error);
       });
     } else {
-      this.sweetAlertService.error('Image not found.');
+      this.sweetAlertService.error('Có lỗi!', 'Không tìm thấy hình ảnh.');
     }
   }
 }

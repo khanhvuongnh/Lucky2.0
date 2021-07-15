@@ -1,7 +1,7 @@
 <img class="admin-background" src="../../../../assets/admin-bg.jpg" alt="admin-bg.jpg">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
   <div class="container">
-    <a class="navbar-brand" routerLink="/settings">Lucky Settings</a>
+    <a class="navbar-brand" [routerLink]="['cai-dat']">Cài Đặt</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -10,25 +10,25 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/settings/emp" routerLinkActive="active">
-            <i class="fa fa-users"></i> Employee
+          <a class="nav-link" [routerLink]="['danh-sach']" routerLinkActive="active">
+            <i class="fa fa-users"></i> CB-CNV
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/settings/prize" routerLinkActive="active">
-            <i class="fa fa-gift"></i> Prize
+          <a class="nav-link" [routerLink]="['giai-thuong']" routerLinkActive="active">
+            <i class="fa fa-gift"></i> Giải Thưởng
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/settings/config" routerLinkActive="active">
-            <i class="fa fa-cog"></i> Config
+          <a class="nav-link" [routerLink]="['cau-hinh']" routerLinkActive="active">
+            <i class="fa fa-cog"></i> Cấu Hình
           </a>
         </li>
       </ul>
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/" routerLinkActive="active">
-            <i class="fa fa-home"></i> Lucky
+          <a class="nav-link" [routerLink]="['']" routerLinkActive="active">
+            <i class="fa fa-home"></i> Trang Chủ
           </a>
         </li>
       </ul>
